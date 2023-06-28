@@ -32,10 +32,10 @@ public class AdminController {
         model.addAttribute("roles", roleService.getAllRoles());
         return "addUserPage";
     }
-    @PostMapping("/addUser")
+    @PostMapping("/")
     public String createUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:/admin";
+        return "redirect:/admin/";
     }
 
     @DeleteMapping("/users/{id}")

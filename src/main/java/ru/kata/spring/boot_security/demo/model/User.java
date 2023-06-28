@@ -17,15 +17,15 @@ public class User {
     private Long id;
 
     public String getUsername() {
-        return username;
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String userName) {
+        this.userName = userName;
     }
 
     @Column(name = "username")
-    private String username;
+    private String userName;
 
     @Column(name = "password")
     private String password;
@@ -48,7 +48,8 @@ public class User {
 
     public User() {}
 
-    public User(String name, String lastName, Long age) {
+    public User(String userName, String name, String lastName, Long age) {
+        this.userName = userName;
         this.name = name;
         this.lastName = lastName;
         this.age = age;

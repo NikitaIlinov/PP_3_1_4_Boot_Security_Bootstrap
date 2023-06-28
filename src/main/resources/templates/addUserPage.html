@@ -10,6 +10,10 @@
 <br>
 
 <form th:method = "POST" th:action = "@{/admin/}" th:object= "${user}">
+  <label for = "name"> Enter userName:</label>
+  <input type = "text" th:field = "*{username}" id = "userName"/>
+  <br>
+  <br>
   <label for = "name"> Enter name:</label>
   <input type = "text" th:field = "*{name}" id = "name"/>
   <br>
@@ -23,9 +27,11 @@
   <br>
   <br>
   <label>Enter role:
-    <select size="2" multiple name="roles" >
-      <option value="1">ADMIN</option>
-      <option selected="selected" value="2">USER</option>
+    <input type="checkbox" name="roles"
+           th:each="role : ${roles}"
+           th:text="${role.name}"
+           th:value="${role.id}"
+           th:field="*{roles}">
     </select>
   </label>
   <br>
