@@ -33,9 +33,11 @@
   <br>
 
   <label>Enter role:
-    <select size="2" multiple name="roles" >
-      <option value="1">ADMIN</option>
-      <option selected="selected" value="2">USER</option>
+    <input type="checkbox" name="roles"
+           th:each="role : ${roles}"
+           th:text="${role.name}"
+           th:value="${role.id}"
+           th:field="*{roles}">
     </select>
   </label>
   <br>

@@ -38,21 +38,22 @@ public class AdminController {
         return "redirect:/admin/";
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
-        return "redirect:/";
+        return "redirect:/admin/";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/{id}/edit")
     public String showUpdateUserPage(@PathVariable("id") Long id, @ModelAttribute("user") User user,  ModelMap model) {
+        model.addAttribute("roles", roleService.getAllRoles());
         model.addAttribute("user", userService.findById(id));
         return "editUserPage";
     }
 
-    @PatchMapping("/editUser")
+    @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user) {
         userService.updateUser(user);
-        return "redirect:/admin";
+        return "redirect:/admin/";
     }
 }

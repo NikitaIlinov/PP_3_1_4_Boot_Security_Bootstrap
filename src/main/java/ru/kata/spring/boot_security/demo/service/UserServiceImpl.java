@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private UserRepository userRepository;
     private PasswordEncoder passwordEncoder;
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new UsernameNotFoundException(String.format("User `%s` not found", username));
         }
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),mapRolesToAuthority(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getUsername() , user.getPassword(),mapRolesToAuthority(user.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthority (Collection<Role> roles) {

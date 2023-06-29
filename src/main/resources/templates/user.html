@@ -11,6 +11,7 @@
 <table border="0" width="30%">
     <thead>
     <tr>
+        <th scope="col">username</th>
         <th scope="col">name</th>
         <th scope="col">lastName</th>
         <th scope="col">age</th>
@@ -18,6 +19,7 @@
     </thead>
     <tbody>
     <tr th:object="${user}">
+        <td><h1 th:text="${user.getUsername()} "></h1></td>
         <td><h1 th:text="${user.getName()} "></h1></td>
         <td><h1 th:text="${user.getLastName()}"></h1></td>
         <td><h1 th:text="${user.getAge()}"></h1></td>
