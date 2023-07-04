@@ -17,7 +17,7 @@
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
         <span class="navbar-brand mb-0 h1"
-              th:text="${user.getEmail()} + '  with role:  ' + ${user.getRoles()}">
+              th:text="${user.getEmail()} + '  with role:  ' + ${user.getRolesByString}">
             </span>
         <a class="btn btn-dark" aria-current="page" th:href="@{/logout}">Logout</a>
     </div>
@@ -68,6 +68,7 @@
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -77,6 +78,7 @@
                                     <td th:text="${user.getLastName()}"/>
                                     <td th:text="${user.getAge()}"/>
                                     <td th:text="${user.getEmail()}"/>
+                                    <td th:text="${user.getRolesByString()}"/>
                                     <td>
                                         <button class="btn btn-info" data-bs-toggle="modal"
                                                 th:data-bs-target="${'#eMdl'+ user.getId()}"
@@ -141,7 +143,7 @@
                                                                         name="roles" multiple>
                                                                     <option th:each="role : ${allRoles}"
                                                                             th:value="${role.getId()}"
-                                                                            th:text="${role.getName()}">Role name
+                                                                            th:text="${role}">Role name
                                                                     </option>
                                                                 </select>
                                                             </div>
@@ -307,7 +309,7 @@
                             <td th:text="${user.getLastName()}"></td>
                             <td th:text="${user.getAge()}"></td>
                             <td th:text="${user.getEmail()}"></td>
-                            <td th:text="${user.getRoles()}"></td>
+                            <td th:text="${user.getRolesByString()}"></td>
                         </tr>
                         </tbody>
                     </table>

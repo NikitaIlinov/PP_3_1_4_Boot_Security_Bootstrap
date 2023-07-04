@@ -21,15 +21,9 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String role;
 
-    static final String ROLE_PREFIX = "ROLE_";
-
     public Role(String role) {
         this.role = role;
     }
-
-//    public String getRole() {
-//        return role;
-//    }
 
     public Role() {}
     public String getName() {
@@ -49,11 +43,11 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String toString() {
-        return role;
+        return role.substring("ROLE_".length());
     }
 
     @Override
     public String getAuthority() {
-        return  ROLE_PREFIX+role;
+        return  role;
     }
 }

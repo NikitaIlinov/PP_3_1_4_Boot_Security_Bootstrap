@@ -147,6 +147,14 @@ public class User implements UserDetails {
         return roles;
     }
 
+    public String getRolesByString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Role role : getRoles()){
+            stringBuilder.append(role).append(" ");
+        }
+        return stringBuilder.toString();
+    }
+
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -166,7 +174,7 @@ public class User implements UserDetails {
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roles=" + roles +
+                ", roles=" + roles.toString() +
                 '}';
     }
 }
